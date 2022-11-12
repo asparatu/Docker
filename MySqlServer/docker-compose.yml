@@ -1,7 +1,7 @@
 version: '3.8'
 services:
-    db:
-        container_name: db
+    mysqlserver:
+        container_name: mysqlserver
         image: mysql:latest
         volumes:
           - mysql-server-data:/var/lib/mysql
@@ -17,9 +17,9 @@ services:
       image: phpmyadmin:latest
       restart: always
       environment:
-        PMA_HOST: db
+        PMA_HOST: mysqlserver
       depends_on:
-        - db
+        - mysqlserver
       ports:
         - '8080:80'
       networks:
