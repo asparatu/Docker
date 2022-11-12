@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+    db:
+        container_name: db
+        image: mysql:latest
+        volumes:
+          - mysql-server-data:/var/lib/mysql
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: 1234567890
+        ports:
+            - '3306:3306'
+        networks: 
+         - default
+    phpmyadmin:
+      container_name: phpmyadmin
+      image: phpmyadmin:latest
+      restart: always
+      environment:
+        PMA_HOST: db
+      depends_on:
+        - db
+      ports:
+        - '8080:80'
+      networks:
+       - default
+volumes:
+    mysql-server-data:
+
+networks:
+  default:
+    name: mysqlserver
+    external: false
