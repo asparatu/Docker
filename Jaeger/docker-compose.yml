@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+   jaeger:
+    container_name: jaeger
+    image: jaegertracing/opentelemetry-all-in-one
+    volumes:
+        - data:/data
+    ports:
+      - 13133:13133
+      - 16686:16686
+      - 4317:55680
+    restart: always
+    networks:
+       - default
+volumes:
+  data:
+
+networks:
+   default:
+     name: jaeger
+     external: false
