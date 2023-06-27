@@ -1,2 +1,3 @@
 # Docker
-This library of Docker Compose yaml comfiguration file to run enveriments on your pc.
+This library of Docker Compose yaml configuration file to run development environments on your pc.
+
