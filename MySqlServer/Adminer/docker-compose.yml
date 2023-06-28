@@ -1,0 +1,46 @@
+version: '3.9'
+services:
+  mysql-server:
+    container_name: mysql-server
+    hostname: hostname
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234567890
+      - MYSQL_DATABASE=MyDatabase
+      - MYSQL_USER=mydatabase-user
+      - MYSQL_PASSWORD=1234567890
+    ports:
+      - 127.0.0.1:3306:3306
+    volumes:
+      - ./data:/var/lib/mysql
+    restart: unless-stopped
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "/usr/bin/mysql -uroot -p$$MYSQL_ROOT_PASSWORD -hlocalhost mysql -e 'SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES LIMIT 1;'"
+        ]
+      interval: 59s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks:
+      - default
+  adminer:
+    container_name: adminer
+    hostname: hostname
+    image: adminer
+    ports:
+      - 127.0.0.1:8080:8080
+    environment:
+      ADMINER_DEFAULT_SERVER: mysql-server
+      ADMINER_DESIGN: lucas-sandery
+    depends_on:
+      - mysql-server
+    restart: unless-stopped
+    networks:
+      - default
+networks:
+  default:
+    name: DataNetwork
+    external: false
