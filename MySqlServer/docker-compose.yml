@@ -18,7 +18,7 @@ services:
       test:
         [
           "CMD-SHELL",
-          "/usr/bin/mysql -uroot -p$$MYSQL_ROOT_PASSWORD -hlocalhost mysql -e 'SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES LIMIT 1;'"
+          "/usr/bin/mysql -uroot -p$$MYSQL_ROOT_PASSWORD -hlocalhost mysql -e 'SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES LIMIT 1;' || exit 1"
         ]
       interval: 59s
       timeout: 5s
