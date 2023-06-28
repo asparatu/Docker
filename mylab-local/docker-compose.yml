@@ -67,6 +67,20 @@ services:
         restart: unless-stopped
         networks:
             - default
+    seq:
+        container_name: seq
+        hostname: picea-rubens
+        image: datalust/seq:latest
+        volumes:
+            - ./seq/data:/data
+        ports:
+            - 127.0.0.1:8081:80
+            - 127.0.0.1:5341:5341
+        environment:
+            - ACCEPT_EULA=Y
+        networks:
+            - default
+        #restart: unless-stopped
 networks:
     default:
         name: mylab.local
