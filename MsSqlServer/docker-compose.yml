@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+  mssql-server:
+    container_name: mssql-server
+    hostname: hostname
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    volumes:
+      - ./data:/var/opt/mssql/data
+      - ./log:/var/opt/mssql/log
+      - ./secrets:/var/opt/mssql/secrets
+      - ./backups:/var/backups
+    ports:
+      - 1433:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=1234567890
+      - MSSQL_PID=Developer
+      - MSSQL_LCID=1033
+      - MSSQL_AGENT_ENABLED=true
+    networks:
+      - default
+    restart: unless-stopped
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P $$MSSQL_SA_PASSWORD -Q 'SELECT 1' || exit 1"
+        ]
+      interval: 59s
+      retries: 10
+      start_period: 10s
+      timeout: 3s
+networks:
+  default:
+    name: DataNetwork
+    external: false
