@@ -15,7 +15,7 @@ services:
         environment:
             - ACCEPT_EULA=Y
             - MSSQL_SA_PASSWORD=1234567890
-            - MSSQL_PID=Developer
+            - MSSQL_PID=Express
         networks:
             - default
         restart: unless-stopped
