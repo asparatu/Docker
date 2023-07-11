@@ -5,7 +5,6 @@ This library of Docker Compose yaml configuration file to run development enviro
 #### Port Error
 Error invoking remote method 'docker-start-container': Error: (HTTP code 500) server error - Ports are not available: exposing port TCP 0.0.0.0:1433 -> 0.0.0.0:0: listen tcp 0.0.0.0:1433: bind: An attempt was made to access a socket in a way forbidden by its access permissions.
 
-#### Solution
 ##### **PowerShell**
 1. Disable Hyper-V
     ```
