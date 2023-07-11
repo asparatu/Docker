@@ -80,7 +80,7 @@ services:
             - ACCEPT_EULA=Y
         networks:
             - default
-        #restart: unless-stopped
+        restart: unless-stopped
 networks:
     default:
         name: mylab.local
