@@ -1,22 +1,21 @@
-version: "3.8"
+version: "3.9"
 
 services:
-   seq:
+  seq:
     container_name: seq
+    hostname: hostname
     image: datalust/seq:latest
     volumes:
-        - data:/data
+      - ./seq/data:/data
     ports:
-      - 5341:80
-    restart: always
+      - 8081:80
+      - 5341:5341
+    restart: unless-stopped
     environment:
       - ACCEPT_EULA=Y
     networks:
-       - default
-volumes:
-  data:
-
+      - default
 networks:
-   default:
-     name: seq
-     external: false
+  default:
+    name: networkname
+    external: false

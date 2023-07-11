@@ -1,4 +1,4 @@
-version: '3.9'
+version: "3.9"
 services:
   mysql-server:
     container_name: mysql-server
@@ -28,5 +28,5 @@ services:
       - default
 networks:
   default:
-    name: DataNetwork
+    name: networkname
     external: false
