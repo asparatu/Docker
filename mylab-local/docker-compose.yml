@@ -81,6 +81,22 @@ services:
         networks:
             - default
         restart: unless-stopped
+    cache:
+        container_name: redis
+        hostname: carya-ovata
+        image: redis:latest
+        command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+        volumes:
+            - ./redis/data:/data
+        ports:
+            - 6379:6379
+        environment:
+            REDIS_HOST: cache
+            REDIS_PORT: 6379
+            REDIS_PASSWORD: eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81=value
+        networks:
+            - default
+        restart: unless-stopped
 networks:
     default:
         name: mylab.local
