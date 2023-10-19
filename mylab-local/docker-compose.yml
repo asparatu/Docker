@@ -29,16 +29,16 @@ services:
             retries: 10
             start_period: 10s
             timeout: 3s
-    mysql-server:
-        container_name: mysql-server
+    mariadb-server:
+        container_name: mariadb-server
         hostname: betula-lenta
-        image: mysql:latest
+        image: mariadb:latest
         environment:
             - MYSQL_ROOT_PASSWORD=1234567890
         ports:
             - 3306:3306
         volumes:
-            - ./mysql/data:/var/lib/mysql
+            - ./mariadb/data:/var/lib/mysql
         restart: unless-stopped
         healthcheck:
             test:
@@ -62,7 +62,7 @@ services:
             ADMINER_DEFAULT_SERVER: betula-lenta
             ADMINER_DESIGN: lucas-sandery
         depends_on:
-            - mysql-server
+            - mariadb-server
             - mssql-server
         restart: unless-stopped
         networks:
