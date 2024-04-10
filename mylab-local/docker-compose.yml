@@ -29,29 +29,29 @@ services:
             retries: 10
             start_period: 10s
             timeout: 3s
-    mariadb-server:
-        container_name: mariadb-server
-        hostname: betula-lenta
-        image: mariadb:latest
-        environment:
-            - MYSQL_ROOT_PASSWORD=1234567890
-        ports:
-            - 3306:3306
-        volumes:
-            - ./mariadb/data:/var/lib/mysql
-        restart: unless-stopped
-        healthcheck:
-            test:
-                [
-                    "CMD-SHELL",
-                    "/usr/bin/mysql -uroot -p$$MYSQL_ROOT_PASSWORD -hlocalhost mysql -e 'SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES LIMIT 1;' || exit 1"
-                ]
-            interval: 59s
-            timeout: 5s
-            retries: 5
-            start_period: 30s
-        networks:
-            - default
+    # mariadb-server:
+    #     container_name: mariadb-server
+    #     hostname: betula-lenta
+    #     image: mariadb:latest
+    #     environment:
+    #         - MYSQL_ROOT_PASSWORD=1234567890
+    #     ports:
+    #         - 3306:3306
+    #     volumes:
+    #         - ./mariadb/data:/var/lib/mysql
+    #     restart: unless-stopped
+    #     healthcheck:
+    #         test:
+    #             [
+    #                 "CMD-SHELL",
+    #                 "/usr/bin/mysql -uroot -p$$MYSQL_ROOT_PASSWORD -hlocalhost mysql -e 'SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES LIMIT 1;' || exit 1"
+    #             ]
+    #         interval: 59s
+    #         timeout: 5s
+    #         retries: 5
+    #         start_period: 30s
+    #     networks:
+    #         - default
     adminer:
         container_name: adminer
         hostname: ulmus-rubra
