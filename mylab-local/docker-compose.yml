@@ -106,7 +106,7 @@ services:
             - mylab.local
         restart: unless-stopped
     redis-cache:
-        container_name: redis
+        container_name: redis-cache
         hostname: carya-ovata
         image: bitnami/redis:latest
         volumes:
