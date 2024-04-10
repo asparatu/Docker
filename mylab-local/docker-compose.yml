@@ -2,8 +2,8 @@ version: "3.9"
 
 networks:
     mylab.local:
-        driver: bridge
-
+        external: true
+        
 services:
     mssql-server:
         container_name: mssql-server
