@@ -1,4 +1,7 @@
 version: "3.9"
+networks:
+    mylab.local:
+        driver: bridge
 
 services:
     mssql-server:
@@ -94,7 +97,3 @@ services:
         networks:
             - default
         restart: unless-stopped
-networks:
-    default:
-        name: mylab.local
-        external: false
