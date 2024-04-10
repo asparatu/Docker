@@ -20,7 +20,7 @@ services:
             - MSSQL_SA_PASSWORD=1234567890
             - MSSQL_PID=Express
         networks:
-            - default
+            - mylab.local
         restart: unless-stopped
         healthcheck:
             test:
@@ -54,7 +54,7 @@ services:
     #         retries: 5
     #         start_period: 30s
     #     networks:
-    #         - default
+    #         - mylab.local
     # adminer:
     #     container_name: adminer
     #     hostname: ulmus-rubra
@@ -69,7 +69,7 @@ services:
     #         - mssql-server
     #     restart: unless-stopped
     #     networks:
-    #         - default
+    #         - mylab.local
     seq:
         container_name: seq
         hostname: picea-rubens
@@ -82,7 +82,7 @@ services:
         environment:
             - ACCEPT_EULA=Y
         networks:
-            - default
+            - mylab.local
         restart: unless-stopped
     cache:
         container_name: redis
@@ -95,5 +95,5 @@ services:
         environment:
             ALLOW_EMPTY_PASSWORD: yes
         networks:
-            - default
+            - mylab.local
         restart: unless-stopped
