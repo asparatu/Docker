@@ -81,7 +81,7 @@ services:
     #         - mylab.local
     phpmyadmin:
         container_name: phpmyadmin
-        hostname:
+        hostname: ulmus-rubra
         image: bitnami/phpmyadmin:latest
         ports:
             - 8080:8080
