@@ -79,6 +79,18 @@ services:
     #         start_period: 30s
     #     networks:
     #         - mylab.local
+    phpmyadmin:
+        container_name: phpmyadmin
+        hostname:
+        image: bitnami/phpmyadmin:latest
+        ports:
+            - 8080:8080
+        depends_on:
+            - mysql-server
+            # - mariadb-server
+        restart: unless-stopped
+        networks:
+            - mylab.local
     # adminer:
     #     container_name: adminer
     #     hostname: ulmus-rubra
