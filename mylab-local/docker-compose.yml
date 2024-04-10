@@ -110,7 +110,7 @@ services:
         hostname: carya-ovata
         image: bitnami/redis:latest
         volumes:
-            - ./redis/data:/data
+            - ./redis/data:/bitnami/redis/data
         ports:
             - 6379:6379
         environment:
