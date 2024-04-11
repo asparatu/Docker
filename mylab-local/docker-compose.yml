@@ -5,6 +5,8 @@ networks:
         external: true
         
 services:
+
+    #ref: https://hub.docker.com/_/microsoft-mssql-server
     mssql-server:
         container_name: mssql-server
         hostname: acer-rubrum
@@ -33,6 +35,8 @@ services:
             retries: 10
             start_period: 10s
             timeout: 3s
+
+    #ref: https://hub.docker.com/r/bitnami/mysql
     mysql-server:
         container_name: mysql-server
         hostname: pinus-strobus
@@ -56,6 +60,8 @@ services:
             start_period: 30s
         networks:
             - mylab.local
+    
+    #ref: https://hub.docker.com/_/mariadb
     # mariadb-server:
     #     container_name: mariadb-server
     #     hostname: betula-lenta
@@ -79,6 +85,8 @@ services:
     #         start_period: 30s
     #     networks:
     #         - mylab.local
+
+    #ref: https://hub.docker.com/r/bitnami/phpmyadmin
     phpmyadmin:
         container_name: phpmyadmin
         hostname: ulmus-rubra
@@ -93,6 +101,8 @@ services:
         restart: unless-stopped
         networks:
             - mylab.local
+
+    #ref: https://hub.docker.com/r/datalust/seq
     seq:
         container_name: seq
         hostname: picea-rubens
@@ -107,6 +117,8 @@ services:
         networks:
             - mylab.local
         restart: unless-stopped
+    
+    #ref: https://hub.docker.com/r/bitnami/redis
     redis-cache:
         container_name: redis-cache
         hostname: carya-ovata
