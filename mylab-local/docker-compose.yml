@@ -20,7 +20,7 @@ services:
             - 1433:1433
         environment:
             - ACCEPT_EULA=Y
-            - MSSQL_SA_PASSWORD=1234567890
+            - MSSQL_SA_PASSWORD=Abc123!@
             - MSSQL_PID=Express
         networks:
             - mylab.local
