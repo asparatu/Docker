@@ -124,7 +124,7 @@ services:
         hostname: carya-ovata
         image: bitnami/redis:latest
         volumes:
-            - ./redis/data:/bitnami/redis/data
+            - ./redis:/bitnami/redis
         ports:
             - 6379:6379
         environment:
