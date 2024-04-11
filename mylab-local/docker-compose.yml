@@ -46,7 +46,7 @@ services:
         ports:
             - 3306:3306
         volumes:
-            - ./mysql/data:/bitnami/mysql/data
+            - ./mysql:/bitnami/mysql
         restart: unless-stopped
         healthcheck:
             test:
