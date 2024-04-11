@@ -71,7 +71,7 @@ services:
     #     ports:
     #         - 3306:3306
     #     volumes:
-    #         - ./mariadb/data:/var/lib/mysql
+    #         - ./mariadb:/var/lib/mysql
     #     restart: unless-stopped
     #     healthcheck:
     #         test:
