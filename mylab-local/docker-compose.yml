@@ -108,7 +108,7 @@ services:
         hostname: picea-rubens
         image: datalust/seq:latest
         volumes:
-            - ./seq/data:/data
+            - ./seq:/data
         ports:
             - 8081:80
             - 5341:5341
