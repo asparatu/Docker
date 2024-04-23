@@ -3,3 +3,6 @@
 **/seq/**/*
 **/redis/**/*
 **/mariadb/**/*
+**/HashiCorp/vault/file
+**/HashiCorp/vault/data
+**/HashiCorp/vault/logs
