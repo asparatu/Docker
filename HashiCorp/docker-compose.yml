@@ -1,0 +1,25 @@
+networks:
+  mylab.local:
+    external: true
+
+services:
+  # Initialize Vault
+  # container cli: vault operator init or vault operator init -n 5 -t 3
+  vault:
+    container_name: hashicorp-vault
+    hostname: quercus-alba
+    image: hashicorp/vault:latest
+    environment:
+      - VAULT_ADDR=http://127.0.0.1:8200
+    ports:
+      - 8200:8200
+    volumes:
+      - ./vault/config.hcl:/vault/config.hcl:ro
+      - ./vault/file:/vault/file
+      - ./vault/logs:/vault/logs
+    networks:
+      - mylab.local
+    restart: unless-stopped
+    cap_add:
+      - IPC_LOCK
+    entrypoint: vault server -config=/vault/config.hcl
