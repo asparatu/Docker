@@ -127,3 +127,18 @@ services:
             mylab.local:
                 ipv4_address: 172.20.0.14
         restart: unless-stopped
+    
+    #ref: https://hub.docker.com/r/greenmail/standalone
+    #ref: https://medium.com/@gabrieletronchin/use-mailkit-and-greenmail-to-develop-a-email-interaction-0b0b27d2f85a
+    greenmail:
+        container_name: greenmail
+        hostname: juglans-nigra
+        image: greenmail/standalone:latest
+        ports:
+            - 3143:3143
+            - 8082:8080
+            - 3025:3025
+        networks:
+            mylab.local:
+                ipv4_address: 172.20.0.15
+        restart: unless-stopped
